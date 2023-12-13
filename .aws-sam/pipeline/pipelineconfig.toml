@@ -1,0 +1,11 @@
+version = 0.1
+[default.pipeline_bootstrap.parameters]
+pipeline_user = "arn:aws:iam::604020082473:user/aws-sam-cli-managed-demo-stage-pipelin-PipelineUser-OQHNElHe8nHn"
+permissions_provider = "AWS IAM"
+
+[demo-stage.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::604020082473:role/aws-sam-cli-managed-demo-stag-PipelineExecutionRole-PzEMdfQPi2Nh"
+cloudformation_execution_role = "arn:aws:iam::604020082473:role/aws-sam-cli-managed-demo--CloudFormationExecutionRo-JYzYbCUpTbw9"
+artifacts_bucket = "aws-sam-cli-managed-demo-stage-pip-artifactsbucket-mkep3bsgmwa0"
+image_repository = "604020082473.dkr.ecr.ap-southeast-1.amazonaws.com/aws-sam-cli-managed-demo-stage-pipeline-resources-imagerepository-ewsbdfkkmox3"
+region = "ap-southeast-1"
