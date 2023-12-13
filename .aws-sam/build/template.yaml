@@ -87,6 +87,25 @@ Resources:
       CodeUri: putItemFunction
     Metadata:
       SamResourceId: putItemFunction
+  HelloFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/index.handler
+      Runtime: nodejs16.x
+      Architectures:
+      - x86_64
+      MemorySize: 128
+      Timeout: 100
+      Description: A simple example includes a HTTP get method to print hello world
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /load-data
+            Method: PATCH
+      CodeUri: HelloFunction
+    Metadata:
+      SamResourceId: HelloFunction
   SampleTable:
     Type: AWS::Serverless::SimpleTable
     Properties:

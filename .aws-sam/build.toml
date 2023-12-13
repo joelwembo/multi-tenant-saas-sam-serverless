@@ -5,8 +5,8 @@ codeuri = "C:\\Users\\joelw\\Desktop\\Office\\production\\prodxcloud\\sam\\prodx
 runtime = "nodejs16.x"
 architecture = "x86_64"
 handler = "src/handlers/get-all-items.getAllItemsHandler"
-manifest_hash = "a6bb31b24d0247e20b88d8d4526471c1"
+manifest_hash = "420e4ae9b44beb7f3d8c0b1baaedae55"
 packagetype = "Zip"
-functions = ["getAllItemsFunction", "getByIdFunction", "putItemFunction"]
+functions = ["getAllItemsFunction", "getByIdFunction", "putItemFunction", "HelloFunction"]
 
 [layer_build_definitions]
