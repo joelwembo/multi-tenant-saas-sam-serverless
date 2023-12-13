@@ -1,4 +1,4 @@
-# sam-app
+# multi-tenant-saas-sam-serverless-typescript
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
@@ -56,7 +56,7 @@ You can find your API Gateway Endpoint URL in the output values displayed after 
 Build your application with the `sam build` command.
 
 ```bash
-sam-app$ sam build
+multi-tenant-saas-sam-serverless-typescript$ sam build
 ```
 
 The SAM CLI installs dependencies defined in `hello-world/package.json`, compiles TypeScript with esbuild, creates a deployment package, and saves it in the `.aws-sam/build` folder.
@@ -66,14 +66,14 @@ Test a single function by invoking it directly with a test event. An event is a 
 Run functions locally and invoke them with the `sam local invoke` command.
 
 ```bash
-sam-app$ sam local invoke HelloWorldFunction --event events/event.json
+multi-tenant-saas-sam-serverless-typescript$ sam local invoke HelloWorldFunction --event events/event.json
 ```
 
 The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
 
 ```bash
-sam-app$ sam local start-api
-sam-app$ curl http://localhost:3000/
+multi-tenant-saas-sam-serverless-typescript$ sam local start-api
+multi-tenant-saas-sam-serverless-typescript$ curl http://localhost:3000/
 ```
 
 The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
@@ -97,7 +97,7 @@ To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs`
 `NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
 
 ```bash
-sam-app$ sam logs -n HelloWorldFunction --stack-name sam-app --tail
+multi-tenant-saas-sam-serverless-typescript$ sam logs -n HelloWorldFunction --stack-name multi-tenant-saas-sam-serverless-typescript --tail
 ```
 
 You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
@@ -107,7 +107,7 @@ You can find more information and examples about filtering Lambda function logs 
 Tests are defined in the `hello-world/tests` folder in this project. Use NPM to install the [Jest test framework](https://jestjs.io/) and run unit tests.
 
 ```bash
-sam-app$ cd hello-world
+multi-tenant-saas-sam-serverless-typescript$ cd hello-world
 hello-world$ npm install
 hello-world$ npm run test
 ```
@@ -117,7 +117,7 @@ hello-world$ npm run test
 To delete the sample application that you created, use the AWS CLI. Assuming you used your project name for the stack name, you can run the following:
 
 ```bash
-sam delete --stack-name sam-app
+sam delete --stack-name multi-tenant-saas-sam-serverless-typescript
 ```
 
 ## Resources
@@ -152,7 +152,7 @@ AWS Quick Start Templates
 Hello World Example
 nodejs14.x – TypeScript
 Zip
-Keep the name of the application as sam-app
+Keep the name of the application as multi-tenant-saas-sam-serverless-typescript
 sam init wizard steps
 sam init wizard steps
 
@@ -171,7 +171,7 @@ Today, you can use the sam build command to transpile code from TypeScript to Ja
 AWS SAM uses the popular open source bundler esbuild to perform these tasks. This does not perform type checking but you may use the tsc CLI to perform this task. Once you have built the TypeScript project, use the sam deploy command to deploy to the AWS Cloud.
 The following shows how this works.
 
-Navigate to the root of sam-app.
+Navigate to the root of multi-tenant-saas-sam-serverless-typescript.
 Run sam build. This command uses esbuild to transpile and package app.ts.
 sam build wizard
 sam build wizard
@@ -195,7 +195,7 @@ AWS SAM Accelerate is a set of features that reduces development and test cycle 
 
 Use AWS SAM Accelerate to build and deploy your code upon changes.
 
-Run sam sync --stack-name sam-app --watch.
+Run sam sync --stack-name multi-tenant-saas-sam-serverless-typescript --watch.
 Open your browser with the API Gateway endpoint from the Outputs section.
 Update the handler function in app.ts file to:
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
@@ -265,7 +265,7 @@ The new package size is approximately 2.8 MB. That represents a 94% reduction in
 
         Deploying with following values
         ===============================
-        Stack name                   : sam-app
+        Stack name                   : multi-tenant-saas-sam-serverless-typescript
         Region                       : ap-southeast-1
         Confirm changeset            : True
         Disable rollback             : False
@@ -310,7 +310,7 @@ CloudFormation events from stack operations (refresh every 5.0 seconds)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
 ResourceStatus                                   ResourceType                                     LogicalResourceId                                ResourceStatusReason
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
-CREATE_IN_PROGRESS                               AWS::CloudFormation::Stack                       sam-app                                          User Initiated
+CREATE_IN_PROGRESS                               AWS::CloudFormation::Stack                       multi-tenant-saas-sam-serverless-typescript                                          User Initiated
 CREATE_IN_PROGRESS                               AWS::ResourceGroups::Group                       ApplicationResourceGroup                         -
 CREATE_IN_PROGRESS                               AWS::IAM::Role                                   HelloWorldFunctionRole                           -
 CREATE_IN_PROGRESS                               AWS::ResourceGroups::Group                       ApplicationResourceGroup                         Resource creation Initiated
@@ -335,7 +335,7 @@ CREATE_COMPLETE                                  AWS::ApiGateway::Deployment    
 CREATE_IN_PROGRESS                               AWS::ApiGateway::Stage                           ServerlessRestApiProdStage                       -
 CREATE_IN_PROGRESS                               AWS::ApiGateway::Stage                           ServerlessRestApiProdStage                       Resource creation Initiated
 CREATE_COMPLETE                                  AWS::ApiGateway::Stage                           ServerlessRestApiProdStage                       -
-CREATE_COMPLETE                                  AWS::CloudFormation::Stack                       sam-app                                          -
+CREATE_COMPLETE                                  AWS::CloudFormation::Stack                       multi-tenant-saas-sam-serverless-typescript                                          -
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
 
 CloudFormation outputs from deployed stack
@@ -344,7 +344,7 @@ Outputs
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------   
 Key                 HelloWorldFunctionIamRole
 Description         Implicit IAM Role created for Hello World function
-Value               arn:aws:iam::604020082473:role/sam-app-HelloWorldFunctionRole-bbWXpLAC3AcG
+Value               arn:aws:iam::604020082473:role/multi-tenant-saas-sam-serverless-typescript-HelloWorldFunctionRole-bbWXpLAC3AcG
 
 Key                 HelloWorldApi
 Description         API Gateway endpoint URL for Prod stage for Hello World function
@@ -352,8 +352,8 @@ Value               https://wzoaxvp5tk.execute-api.ap-southeast-1.amazonaws.com/
 
 Key                 HelloWorldFunction
 Description         Hello World Lambda Function ARN
-Value               arn:aws:lambda:ap-southeast-1:604020082473:function:sam-app-HelloWorldFunction-Q5gIJq2fcor6
+Value               arn:aws:lambda:ap-southeast-1:604020082473:function:multi-tenant-saas-sam-serverless-typescript-HelloWorldFunction-Q5gIJq2fcor6
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------   
 
 
-Successfully created/updated stack - sam-app in ap-southeast-1
+Successfully created/updated stack - multi-tenant-saas-sam-serverless-typescript in ap-southeast-1
