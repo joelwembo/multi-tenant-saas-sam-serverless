@@ -1,11 +1,9 @@
 {
-  "name": "hello_world",
+  "name": "multi-tenant-saas-sam-serverless-typescript",
   "version": "1.0.0",
-  "description": "hello world sample for NodeJS",
+  "description": "multi-tenant-saas-sam-serverless-typescript",
   "main": "app.js",
-  "repository": "https://github.com/awslabs/aws-sam-cli/tree/develop/samcli/local/init/templates/cookiecutter-aws-sam-hello-nodejs",
-  "author": "SAM CLI",
-  "license": "MIT",
+  "author": "Joel Wembo",
   "dependencies": {
     "esbuild": "^0.14.14"
   },
