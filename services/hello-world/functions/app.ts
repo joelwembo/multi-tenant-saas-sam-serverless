@@ -31,3 +31,27 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
 
     return response;
 };
+
+
+export const JoellambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+    let response: APIGatewayProxyResult;
+    try {
+        response = {
+            statusCode: 200,
+            body: JSON.stringify({
+                message: 'Joel , Welcome to the website joelwembo.com ....',
+            }),
+        };
+    } catch (err: unknown) {
+        console.error(err);
+        response = {
+            statusCode: 500,
+            body: JSON.stringify({
+                message: err instanceof Error ? err.message : 'some error happened on event happended...',
+            }),
+        };
+    }
+
+    return response;
+};
+
