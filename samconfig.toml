@@ -4,7 +4,7 @@ version = 0.1
 
 [default]
 [default.global.parameters]
-stack_name = "multi-tenant-saas-sam-serverless-typescript"
+stack_name = "saas-sam-serverless-typescript"
 
 [default.build.parameters]
 cached = true

@@ -1,8 +1,21 @@
+name: CI/CD prodxcloud-multi-tenant-saas-sam-cli
+
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: 
+        - main
+        - master
+        - develop
+        - 'release/*'
+    tags: 
+        - prod-v*
+  pull_request:
+    branches: 
+        - main
+        - master
+        - develop
+        - 'release/*'
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -31,4 +44,4 @@ jobs:
       # Run Unit tests- Specify unit tests here 
 
       # sam deploy
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name multi-tenant-saas-sam-serverless-typescript --s3-bucket ##s3-bucket## --capabilities CAPABILITY_IAM --region ##region## 
+      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-serverless-typescript ##s3-bucket## --capabilities CAPABILITY_IAM --region ##region## 
