@@ -6,7 +6,7 @@ codeuri = "C:\\Users\\joelw\\Desktop\\Office\\production\\prodxcloud\\sam\\prodx
 runtime = "nodejs16.x"
 architecture = "x86_64"
 handler = "src/handlers/get-all-items.getAllItemsHandler"
-manifest_hash = "39ba1a33310e585761dad7abc7ff370e"
+manifest_hash = "fbb4cf32f5862400f44849b588ed148a"
 packagetype = "Zip"
 functions = ["getAllItemsFunction", "getByIdFunction", "putItemFunction"]
 
@@ -28,6 +28,7 @@ Target = "es2020"
 EntryPoints = ["app.ts"]
 
 
+
 [function_build_definitions.9fdf6aa5-e7e9-454a-8cb7-6983ba9f415a]
 codeuri = "C:\\Users\\joelw\\Desktop\\Office\\production\\prodxcloud\\sam\\prodxcloud-engine-multi-tenant-saas-sam-serverless-typescript\\services\\hello-world\\functions"
 runtime = "nodejs16.x"
@@ -44,5 +45,6 @@ BuildMethod = "esbuild"
 Minify = true
 Target = "es2020"
 EntryPoints = ["app.ts"]
+
 
 [layer_build_definitions]

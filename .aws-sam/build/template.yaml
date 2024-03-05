@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: 'multi-tenant-saas-sam-serverless-typescript #magic___^_^___line Sample
-  SAM Template for multi-tenant-saas-sam-serverless-typescript #magic___^_^___line
+Description: 'multi-tenant-saas-sam-serverless-typescript #magic___^_^___line SAM
+  Template for multi-tenant-saas-sam-serverless-typescript #magic___^_^___line
 
   '
 Globals:
