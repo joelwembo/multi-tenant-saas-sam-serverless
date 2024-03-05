@@ -16,6 +16,9 @@ jobs:
             node-version: 18.x
       - name: Install dependencies
         run: npm install
+
+      - name: Install esbuild
+        run:  npm install -g esbuild
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -25,7 +28,7 @@ jobs:
       # sam build 
       - run: sam build
 
-# Run Unit tests- Specify unit tests here 
+      # Run Unit tests- Specify unit tests here 
 
-# sam deploy
+      # sam deploy
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name multi-tenant-saas-sam-serverless-typescript --s3-bucket ##s3-bucket## --capabilities CAPABILITY_IAM --region ##region## 

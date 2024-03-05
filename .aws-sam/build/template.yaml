@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
+Transform: AWS::Serverless-2018-10-31
 Description: 'multi-tenant-saas-sam-serverless-typescript #magic___^_^___line SAM
   Template for multi-tenant-saas-sam-serverless-typescript #magic___^_^___line
 
@@ -18,7 +18,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/get-all-items.getAllItemsHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Architectures:
       - x86_64
       MemorySize: 128
@@ -46,7 +46,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/get-by-id.getByIdHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Architectures:
       - x86_64
       MemorySize: 128
@@ -74,7 +74,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/put-item.putItemHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Architectures:
       - x86_64
       MemorySize: 128
@@ -125,7 +125,7 @@ Resources:
     Properties:
       CodeUri: HelloWorldFunction
       Handler: app.lambdaHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Architectures:
       - x86_64
       Events:
@@ -147,7 +147,7 @@ Resources:
     Properties:
       CodeUri: JoellambdaHandlerFunction
       Handler: app.JoellambdaHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Architectures:
       - x86_64
       Events:

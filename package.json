@@ -4,13 +4,14 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "aws-sdk": "^2.799.0"
+        "aws-sdk": "^2.799.0",
+        "esbuild": "^0.20.1"
     },
     "devDependencies": {
+        "esbuild": "^0.20.1",
         "jest": "^26.6.3"
     },
     "scripts": {
         "test": "jest"
     }
 }
-

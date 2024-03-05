@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
+Transform: AWS::Serverless-2018-10-31
 Description: >
   multi-tenant-saas-sam-serverless-typescript #magic___^_^___line SAM Template for multi-tenant-saas-sam-serverless-typescript #magic___^_^___line
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
@@ -20,7 +20,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/get-all-items.getAllItemsHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Architectures:
       - x86_64
       MemorySize: 128
@@ -41,14 +41,14 @@ Resources:
             Path: /
             Method: GET
   # Each Lambda function is defined by properties:
-  # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+  # https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlessfunction
 
   # This is a Lambda function config associated with the source code: get-by-id.js
   getByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/get-by-id.getByIdHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Architectures:
       - x86_64
       MemorySize: 128
@@ -69,14 +69,14 @@ Resources:
             Path: /{id}
             Method: GET
   # Each Lambda function is defined by properties:
-  # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+  # https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlessfunction
 
   # This is a Lambda function config associated with the source code: put-item.js
   putItemFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: src/handlers/put-item.putItemHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Architectures:
       - x86_64
       MemorySize: 128
@@ -97,7 +97,7 @@ Resources:
             Path: /
             Method: POST
   # Simple syntax to create a DynamoDB table with a single attribute primary key, more in
-  # https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlesssimpletable
+  # https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlesssimpletable
 
   # DynamoDB table to store item: {id: &lt;ID&gt;, name: &lt;NAME&gt;}
   SampleTable:
@@ -126,16 +126,16 @@ Resources:
 
 
   HelloWorldFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: services/hello-world/functions/
       Handler: app.lambdaHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Architectures:
       - x86_64
       Events:
         HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#api
           Properties:
             Path: /hello
             Method: get
@@ -149,16 +149,16 @@ Resources:
         - app.ts
 
   JoellambdaHandlerFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: services/hello-world/functions/
       Handler: app.JoellambdaHandler
-      Runtime: nodejs16.x
+      Runtime: nodejs18.x
       Architectures:
       - x86_64
       Events:
         HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#api
           Properties:
             Path: /test
             Method: get
