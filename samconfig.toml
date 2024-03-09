@@ -18,6 +18,11 @@ lint = true
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
 resolve_s3 = true
+s3_prefix = "sam-serverless-api"
+region = "ap-southeast-1"
+disable_rollback = true
+image_repositories = []
+stack_name = "sam-serverless-api"
 
 [default.package.parameters]
 resolve_s3 = true

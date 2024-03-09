@@ -15,6 +15,13 @@ on:
         - master
         - develop
         - 'release/*'
+env:
+    BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    AWS_DEFAULT_REGION: "ap-southeast-1"   
+
+
 
 jobs:
   build-deploy:
@@ -34,14 +41,12 @@ jobs:
         run:  npm install -g esbuild
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-southeast-1
+          aws-access-key-id: ${{ env. AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
 
       # sam build 
       - run: sam build
-
       # Run Unit tests- Specify unit tests here 
-
       # sam deploy
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-serverless-typescript ##s3-bucket## --capabilities CAPABILITY_IAM --region ##region## 
