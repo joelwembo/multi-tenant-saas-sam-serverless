@@ -1,5 +1,5 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2018-10-31
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
 Description: multi-tenant-saas-sam-serverless-typescript #magic___^_^___line SAM Template for multi-tenant-saas-sam-serverless-typescript #magic___^_^___line
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
