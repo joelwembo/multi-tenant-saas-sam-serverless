@@ -98,7 +98,83 @@ Resources:
   # Simple syntax to create a DynamoDB table with a single attribute primary key, more in
   # https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlesssimpletable
 
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: services/hello-world/functions/
+      Handler: app.lambdaHandler
+      Runtime: nodejs18.x
+      Architectures:
+      - x86_64
+      Events:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#api
+          Properties:
+            Path: /hello
+            Method: get
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: es2020
+        # Sourcemap: true # Enabling source maps will create the required NODE_OPTIONS environment variables on your lambda function during sam build
+        EntryPoints:
+        - app.ts
+
+  prodxcloudFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: src/handlers/prodxcloud-functions.handler
+      Runtime: nodejs18.x
+      CodeUri: services/prodxcloud-services/functions/
+      MemorySize: 128
+      Timeout: 100
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref ProdxcloudTable
+          BUCKET_NAME: !Ref ProdxcloudBucket
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref ProdxcloudBucket
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ProdxcloudTable
+        
+      Events:
+        ProdxcloudApi:
+          Type: Api
+          Properties:
+            Path: /prodxcloud
+            Method: get
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: es2020
+        # Sourcemap: true # Enabling source maps will create the required NODE_OPTIONS environment variables on your lambda function during sam build
+        EntryPoints:
+        - prodxcloud-functions.ts        
+
+
   # DynamoDB table to store item: {id: &lt;ID&gt;, name: &lt;NAME&gt;}
+
+  ProdxcloudTable:
+    Type: 'AWS::DynamoDB::Table'
+    Properties:
+      TableName: 'ProdxcloudTable'
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+  ProdxcloudBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: 'prodxcloud-bucket'
   SampleTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
@@ -124,28 +200,7 @@ Resources:
       AutoConfigurationEnabled: 'true'
 
 
-  HelloWorldFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: services/hello-world/functions/
-      Handler: app.lambdaHandler
-      Runtime: nodejs18.x
-      Architectures:
-      - x86_64
-      Events:
-        HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#api
-          Properties:
-            Path: /hello
-            Method: get
-    Metadata: # Manage esbuild properties
-      BuildMethod: esbuild
-      BuildProperties:
-        Minify: true
-        Target: es2020
-        # Sourcemap: true # Enabling source maps will create the required NODE_OPTIONS environment variables on your lambda function during sam build
-        EntryPoints:
-        - app.ts
+  
 
   JoellambdaHandlerFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlessfunction
@@ -211,6 +266,19 @@ Outputs:
   JoellambdaHandlerFunctionIamRole:
     Description: Implicit IAM Role created for joel handler function
     Value: !GetAtt JoellambdaHandlerFunctionRole.Arn
+
+  ProdxcloudApi:
+    Description: 'API Gateway endpoint URL for Prod stage'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/prodxcloud/'
+  ProdxcloudFunction:
+    Description: 'ProdxCloud Lambda Function ARN'
+    Value: !GetAtt prodxcloudFunction.Arn
+  ProdxcloudTable:
+    Description: 'ProdxCloud DynamoDB Table Name'
+    Value: !Ref ProdxcloudTable
+  ProdxcloudBucket:
+    Description: 'ProdxCloud S3 Bucket Name'
+    Value: !Ref ProdxcloudBucket  
 
 
 
