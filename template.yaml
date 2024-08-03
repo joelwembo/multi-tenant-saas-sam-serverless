@@ -18,7 +18,8 @@ Resources:
   getAllItemsFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: src/handlers/get-all-items.getAllItemsHandler
+      CodeUri: services/standalone-functions/functions/
+      Handler: get-all-items.getAllItemsHandler
       Runtime: nodejs18.x
       Architectures:
       - x86_64
@@ -46,7 +47,8 @@ Resources:
   getByIdFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: src/handlers/get-by-id.getByIdHandler
+      CodeUri: services/standalone-functions/functions/
+      Handler: get-by-id.getByIdHandler
       Runtime: nodejs18.x
       Architectures:
       - x86_64
@@ -74,7 +76,8 @@ Resources:
   putItemFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: src/handlers/put-item.putItemHandler
+      CodeUri: services/standalone-functions/functions/
+      Handler: put-item.putItemHandler
       Runtime: nodejs18.x
       Architectures:
       - x86_64
@@ -101,7 +104,7 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: services/hello-world/functions/
+      CodeUri: services/tenant-services/functions/
       Handler: app.lambdaHandler
       Runtime: nodejs18.x
       Architectures:
@@ -205,7 +208,7 @@ Resources:
   JoellambdaHandlerFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2018-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: services/hello-world/functions/
+      CodeUri: services/tenant-services/functions/
       Handler: app.JoellambdaHandler
       Runtime: nodejs18.x
       Architectures:
